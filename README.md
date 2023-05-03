@@ -34,9 +34,36 @@ We ask all of our community members and contributors to adhere to the [Ansible c
 
 Get Involved
 ------------
-
+- name: "{{ github_cr_task }} - Update Check Run"
+  ansible.builtin.include_role: 
+    name: github-cr-in_progress
+  vars:
+    github_cr_name: "{{ github_cr_task }}"
+    github_cr_title: "Building {{ build_image }}"
+    github_cr_summary: "Building `{{ build_image }} ({{ build_image_arch }})`"
+    github_cr_details: |
+      "*Building `{{ build_image }} ({{build_image_arch }})`*\n"
+      "Source: `{{ clone_repo }}:{{ clone_branch }}`\n"
+      "Build Image: `{{ build_image }}`\n"
+      "Architecture: `{{ build_image_arch }}`\n"
+      "Successfully cloned source from `https://github.com/{{ clone_repo }}.git`\n"
+  when: ci- name: "{{ github_cr_task }} - Update Check Run"
+  ansible.builtin.include_role: 
+    name: github-cr-in_progress
+  vars:
+    github_cr_name: "{{ github_cr_task }}"
+    github_cr_title: "Building {{ build_image }}"
+    github_cr_summary: "Building `{{ build_image }} ({{ build_image_arch }})`"
+    github_cr_details: |
+      "*Building `{{ build_image }} ({{build_image_arch }})`*\n"
+      "Source: `{{ clone_repo }}:{{ clone_branch }}`\n"
+      "Build Image: `{{ build_image }}`\n"
+      "Architecture: `{{ build_image_arch }}`\n"
+      "Successfully cloned source from `https://github.com/{{ clone_repo }}.git`\n"
+  when: ci
 We welcome your feedback and ideas. Here's how to reach us with feedback and questions:
 
 - Join the `#ansible-awx` channel on irc.libera.chat
 - Join the [mailing list](https://groups.google.com/forum/#!forum/awx-project) 
 ansible is awesome
+super awesome...
