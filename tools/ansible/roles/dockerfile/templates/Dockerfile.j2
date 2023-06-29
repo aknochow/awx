@@ -5,8 +5,9 @@
 ###
 
 # Build container
-FROM quay.io/centos/centos:stream9 as builder
-
+#FROM quay.io/centos/centos:stream9 as builder
+# CI Test Debug (introducing intentional typo):
+FROM quay.io/centos/cents:stream9 as builder
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
