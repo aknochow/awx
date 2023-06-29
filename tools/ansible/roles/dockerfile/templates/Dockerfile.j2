@@ -5,9 +5,7 @@
 ###
 
 # Build container
-#FROM quay.io/centos/centos:stream9 as builder
-# CI Test Debug (introducing intentional typo):
-FROM quay.io/centos/cents:stream9 as builder
+FROM quay.io/centos/centos:stream9 as builder
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
@@ -23,7 +21,8 @@ RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
 RUN dnf -y update && dnf install -y 'dnf-command(config-manager)' && \
     dnf config-manager --set-enabled crb && \
     dnf -y install \
-    gcc \
+    # CI Test Debug (introducing intentional typo):
+    gcccc \
     gcc-c++ \
     git-core \
     gettext \
